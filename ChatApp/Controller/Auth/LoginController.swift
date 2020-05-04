@@ -7,6 +7,7 @@
 //
 import UIKit
 import Firebase
+import JGProgressHUD
 
 protocol AuthenticationControllerProtocol {
     func checkFormStatus()
@@ -85,7 +86,11 @@ class LoginController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
+        showLoader(true, withText: "Logging in")
+        
         AuthService.shared.logUserIn(email: email, password: password) { (results, error) in
+            self.showLoader(false)
+            
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -132,6 +137,9 @@ class LoginController: UIViewController {
         
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
 }
 
