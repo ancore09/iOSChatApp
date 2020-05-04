@@ -11,7 +11,7 @@ import UIKit
 class InputContainerView: UIView {
     
     
-    init(image: UIImage, textField: UITextField) {
+    init(image: UIImage?, textField: UITextField) {
         super.init(frame: .zero)
         setHeight(height: 50)
         
@@ -23,7 +23,7 @@ class InputContainerView: UIView {
         addSubview(iv)
         iv.centerY(inView: self)
         iv.anchor(left: leftAnchor, paddingLeft: 8)
-        iv.setDimensions(height: 28, width: 28)
+        iv.setDimensions(height: 24, width: 24)
         
         addSubview(textField)
         textField.centerY(inView: self)
