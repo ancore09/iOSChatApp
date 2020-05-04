@@ -30,11 +30,15 @@ class LoginController: UIViewController {
         configureGradientLayer()
         
         view.addSubview(iconImage)
-        iconImage.translatesAutoresizingMaskIntoConstraints = false
-        iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        iconImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        iconImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
+//        iconImage.translatesAutoresizingMaskIntoConstraints = false
+//        iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        iconImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
+//        iconImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        
+        iconImage.centerX(inView: view)
+        iconImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        iconImage.setDimensions(height: 120, width: 120)
     }
     
     func configureGradientLayer() {
