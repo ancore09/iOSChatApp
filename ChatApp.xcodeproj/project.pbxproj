@@ -13,6 +13,7 @@
 		772A65A6246067AC0081CD93 /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65A5246067AC0081CD93 /* InputContainerView.swift */; };
 		772A65A824606A8E0081CD93 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65A724606A8E0081CD93 /* CustomTextField.swift */; };
 		772A65AA24607BA70081CD93 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65A924607BA70081CD93 /* LoginViewModel.swift */; };
+		772A65AC246082D30081CD93 /* RegViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65AB246082D30081CD93 /* RegViewModel.swift */; };
 		7793A833245F2FFA00A5E33F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A832245F2FFA00A5E33F /* AppDelegate.swift */; };
 		7793A835245F2FFA00A5E33F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A834245F2FFA00A5E33F /* SceneDelegate.swift */; };
 		7793A837245F2FFA00A5E33F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A836245F2FFA00A5E33F /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		772A65A5246067AC0081CD93 /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		772A65A724606A8E0081CD93 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		772A65A924607BA70081CD93 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		772A65AB246082D30081CD93 /* RegViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewModel.swift; sourceTree = "<group>"; };
 		7793A82F245F2FFA00A5E33F /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7793A832245F2FFA00A5E33F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7793A834245F2FFA00A5E33F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,15 @@
 			children = (
 				772A659F246055B70081CD93 /* LoginController.swift */,
 				772A65A1246055C40081CD93 /* RegController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		772A65AD246082DF0081CD93 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				772A65A924607BA70081CD93 /* LoginViewModel.swift */,
+				772A65AB246082D30081CD93 /* RegViewModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -115,7 +126,7 @@
 		77986509245F707F003335B4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				772A65A924607BA70081CD93 /* LoginViewModel.swift */,
+				772A65AD246082DF0081CD93 /* Auth */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -219,6 +230,7 @@
 				772A65A6246067AC0081CD93 /* InputContainerView.swift in Sources */,
 				7793A833245F2FFA00A5E33F /* AppDelegate.swift in Sources */,
 				772A65A2246055C40081CD93 /* RegController.swift in Sources */,
+				772A65AC246082D30081CD93 /* RegViewModel.swift in Sources */,
 				7798650E245F70C6003335B4 /* ConversationViewController.swift in Sources */,
 				7793A835245F2FFA00A5E33F /* SceneDelegate.swift in Sources */,
 				772A65A0246055B70081CD93 /* LoginController.swift in Sources */,
