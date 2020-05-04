@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class RegController: UIViewController {
     
     private var viewModel = RegViewModel()
+    private var profileImage: UIImage?
     
     private lazy var emailContainer: UIView = {
         let containerView = InputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: emailTextField)
@@ -56,6 +58,7 @@ class RegController: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         button.isEnabled = false
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
         button.setHeight(height: 50)
         return button
     }()
@@ -65,7 +68,7 @@ class RegController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
         button.tintColor = .white
         button.clipsToBounds = true
-        button.imageView?.clipsToBounds = true
+        button.imageView?.contentMode = .scaleAspectFill
         button.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
         return button
     }()
@@ -93,6 +96,53 @@ class RegController: UIViewController {
             viewModel.username = sender.text
         }
         checkFormStatus()
+    }
+    
+    @objc func handleRegistration() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullNameTextField.text else { return }
+        guard let username = userNameTextField.text?.lowercased() else { return }
+        guard let profileImage = profileImage else { return }
+        
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        
+        let filename = NSUUID().uuidString
+        let ref = Storage.storage().reference(withPath: "/profile_images/\(filename)")
+        
+        ref.putData(imageData, metadata: nil) { (meta, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            ref.downloadURL { (url, error) in
+                guard let profileImageUrl = url?.absoluteString else { return }
+                
+                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                    
+                    guard let uid = result?.user.uid else { return }
+                    
+                    let data = ["email": email,
+                                "fullname": fullname,
+                                "profileImageUrl": profileImageUrl,
+                                "uid": uid,
+                                "username": username] as [String : Any]
+                    
+                    Firestore.firestore().collection("users").document(uid).setData(data) { (error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            return
+                        }
+                        print("did create user")
+                    }
+                }
+            }
+        }
     }
     
     func configureUI() {
@@ -123,13 +173,14 @@ class RegController: UIViewController {
 extension RegController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.originalImage] as? UIImage
+        profileImage = image
         
         plusPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         plusPhotoButton.layer.borderColor = UIColor(white: 1, alpha: 0.7).cgColor
         plusPhotoButton.layer.borderWidth = 3.0
         plusPhotoButton.layer.cornerRadius = 200 / 2
         //plusPhotoButton.imageView?.clipsToBounds = true
-        plusPhotoButton.imageView?.contentMode = .scaleAspectFill
+        //plusPhotoButton.imageView?.contentMode = .scaleAspectFill
         
         dismiss(animated: true, completion: nil)
     }
