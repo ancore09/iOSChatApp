@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		772A65AA24607BA70081CD93 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65A924607BA70081CD93 /* LoginViewModel.swift */; };
 		772A65AC246082D30081CD93 /* RegViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65AB246082D30081CD93 /* RegViewModel.swift */; };
 		772A65AF24608EF90081CD93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 772A65AE24608EF90081CD93 /* GoogleService-Info.plist */; };
+		772A65B12460B21F0081CD93 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65B02460B21F0081CD93 /* AuthService.swift */; };
 		7793A833245F2FFA00A5E33F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A832245F2FFA00A5E33F /* AppDelegate.swift */; };
 		7793A835245F2FFA00A5E33F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A834245F2FFA00A5E33F /* SceneDelegate.swift */; };
 		7793A837245F2FFA00A5E33F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A836245F2FFA00A5E33F /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		772A65A924607BA70081CD93 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		772A65AB246082D30081CD93 /* RegViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewModel.swift; sourceTree = "<group>"; };
 		772A65AE24608EF90081CD93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		772A65B02460B21F0081CD93 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		7793A82F245F2FFA00A5E33F /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7793A832245F2FFA00A5E33F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7793A834245F2FFA00A5E33F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		7798650B245F7090003335B4 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				772A65B02460B21F0081CD93 /* AuthService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -179,7 +182,6 @@
 				B000E7776F4023C53EB948FC /* Pods-ChatApp.debug.xcconfig */,
 				758106276600805E0A3E4B77 /* Pods-ChatApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -302,6 +304,7 @@
 				7793A837245F2FFA00A5E33F /* ViewController.swift in Sources */,
 				772A65A6246067AC0081CD93 /* InputContainerView.swift in Sources */,
 				7793A833245F2FFA00A5E33F /* AppDelegate.swift in Sources */,
+				772A65B12460B21F0081CD93 /* AuthService.swift in Sources */,
 				772A65A2246055C40081CD93 /* RegController.swift in Sources */,
 				772A65AC246082D30081CD93 /* RegViewModel.swift in Sources */,
 				7798650E245F70C6003335B4 /* ConversationViewController.swift in Sources */,
