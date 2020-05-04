@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseId = "ConvCell"
 
@@ -17,11 +18,39 @@ class ConversationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        authenticateUser()
     }
 
     
     @objc func showProfile() {
-        
+        logout()
+    }
+    
+    func authenticateUser() {
+        if Auth.auth().currentUser?.uid == nil {
+            print("user is not logged in")
+            presentLoginScreen()
+        } else {
+            print("user logged in")
+        }
+    }
+    
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            presentLoginScreen()
+        } catch {
+            print("Error")
+        }
+    }
+    
+    func presentLoginScreen() {
+        DispatchQueue.main.async {
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
     }
     
     func configureUI() {

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Andrey Grechko. All rights reserved.
 //
 import UIKit
+import Firebase
 
 protocol AuthenticationControllerProtocol {
     func checkFormStatus()
@@ -81,7 +82,17 @@ class LoginController: UIViewController {
     }
     
     @objc func handleLogin() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
         
+        Auth.auth().signIn(withEmail: email, password: password) { (results, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func textDidChange(sender: UITextField) {

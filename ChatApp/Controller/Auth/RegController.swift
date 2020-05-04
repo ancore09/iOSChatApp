@@ -139,6 +139,7 @@ class RegController: UIViewController {
                             return
                         }
                         print("did create user")
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             }
