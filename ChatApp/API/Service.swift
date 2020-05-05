@@ -13,7 +13,7 @@ struct Service {
     
     func fetchUsers(completion: @escaping([User]) -> Void) {
         var users = [User]()
-        Firestore.firestore().collection("users").getDocuments { (snapshot, error) in
+        COLLECTION_USERS.getDocuments { (snapshot, error) in
             snapshot?.documents.forEach({ (document) in
                 let dictionary = document.data()
                 let user = User(dictionary: dictionary)
@@ -21,6 +21,14 @@ struct Service {
                 //completion(users)
             })
             completion(users)
+        }
+    }
+    
+    func fetchUser(withUid uid: String, completion: @escaping(User) -> Void) {
+        COLLECTION_USERS.document(uid).getDocument { (snapshot, error) in
+            guard let dict = snapshot?.data() else { return }
+            let user = User(dictionary: dict)
+            completion(user)
         }
     }
     
@@ -34,6 +42,9 @@ struct Service {
         
         COLLECTION_MESSAGES.document(currentUid).collection(toUser.uid).addDocument(data: data) { (error) in
             COLLECTION_MESSAGES.document(toUser.uid).collection(currentUid).addDocument(data: data, completion: completion)
+            
+            COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").document(toUser.uid).setData(data)
+            COLLECTION_MESSAGES.document(toUser.uid).collection("recent-messages").document(currentUid).setData(data)
         }
     }
     
@@ -53,6 +64,28 @@ struct Service {
                 }
             })
             //completion(messages)
+        }
+    }
+    
+    func fetchConversations(completion: @escaping([Conversation]) -> Void) {
+        var conversations = [Conversation]()
+        
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        let query = COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").order(by: "timestamp")
+        
+        query.addSnapshotListener { (snapshot, error) in
+            snapshot?.documentChanges.forEach({ (change) in
+                let dict = change.document.data()
+                let message = Message(dictionary: dict)
+                
+                self.fetchUser(withUid: message.toId) { (user) in
+                    let conversation = Conversation(user: user, message: message)
+                    conversations.append(conversation)
+                    completion(conversations)
+                }
+            })
+            //completion(conversations)
         }
     }
 }

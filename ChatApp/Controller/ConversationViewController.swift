@@ -16,6 +16,7 @@ class ConversationViewController: UIViewController {
     // MARK: Properties
     
     private let tableView = UITableView()
+    private var conversations = [Conversation]()
     
     private let newMessageButton: UIButton = {
         let button = UIButton(type: .system)
@@ -35,6 +36,7 @@ class ConversationViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         authenticateUser()
+        fetchConversations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +57,15 @@ class ConversationViewController: UIViewController {
         //nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
         //navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    //MARK: API
+    
+    func fetchConversations() {
+        Service.shared.fetchConversations { (conversations) in
+            self.conversations = conversations
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: Helpers
@@ -116,12 +127,12 @@ class ConversationViewController: UIViewController {
 
 extension ConversationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath)
-        cell.textLabel?.text = "Test Cell"
+        cell.textLabel?.text = conversations[indexPath.row].message.text
         return cell
     }
     
