@@ -24,6 +24,9 @@
 		772A65BB2461B26A0081CD93 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65BA2461B26A0081CD93 /* ChatController.swift */; };
 		772A65BD2461C5A70081CD93 /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65BC2461C5A70081CD93 /* CustomInputAccessoryView.swift */; };
 		772A65BF2461CE5B0081CD93 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65BE2461CE5B0081CD93 /* MessageCell.swift */; };
+		772A65C12461D7AE0081CD93 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65C02461D7AE0081CD93 /* Message.swift */; };
+		772A65C32461DB5A0081CD93 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65C22461DB5A0081CD93 /* MessageViewModel.swift */; };
+		772A65C52461E98A0081CD93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65C42461E98A0081CD93 /* Constants.swift */; };
 		7793A833245F2FFA00A5E33F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A832245F2FFA00A5E33F /* AppDelegate.swift */; };
 		7793A835245F2FFA00A5E33F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A834245F2FFA00A5E33F /* SceneDelegate.swift */; };
 		7793A837245F2FFA00A5E33F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A836245F2FFA00A5E33F /* ViewController.swift */; };
@@ -52,6 +55,9 @@
 		772A65BA2461B26A0081CD93 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		772A65BC2461C5A70081CD93 /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
 		772A65BE2461CE5B0081CD93 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		772A65C02461D7AE0081CD93 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		772A65C22461DB5A0081CD93 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		772A65C42461E98A0081CD93 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7793A82F245F2FFA00A5E33F /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7793A832245F2FFA00A5E33F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7793A834245F2FFA00A5E33F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				772A65B62461951D0081CD93 /* User.swift */,
+				772A65C02461D7AE0081CD93 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -165,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				772A65AD246082DF0081CD93 /* Auth */,
+				772A65C22461DB5A0081CD93 /* MessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				772A65A3246058080081CD93 /* Extensions.swift */,
+				772A65C42461E98A0081CD93 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -323,9 +332,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7793A837245F2FFA00A5E33F /* ViewController.swift in Sources */,
+				772A65C52461E98A0081CD93 /* Constants.swift in Sources */,
 				772A65A6246067AC0081CD93 /* InputContainerView.swift in Sources */,
 				7793A833245F2FFA00A5E33F /* AppDelegate.swift in Sources */,
 				772A65B12460B21F0081CD93 /* AuthService.swift in Sources */,
+				772A65C32461DB5A0081CD93 /* MessageViewModel.swift in Sources */,
 				772A65A2246055C40081CD93 /* RegController.swift in Sources */,
 				772A65AC246082D30081CD93 /* RegViewModel.swift in Sources */,
 				772A65B5246190FF0081CD93 /* UserCell.swift in Sources */,
@@ -339,6 +350,7 @@
 				772A65AA24607BA70081CD93 /* LoginViewModel.swift in Sources */,
 				772A65BB2461B26A0081CD93 /* ChatController.swift in Sources */,
 				772A65A824606A8E0081CD93 /* CustomTextField.swift in Sources */,
+				772A65C12461D7AE0081CD93 /* Message.swift in Sources */,
 				772A65B324618C5D0081CD93 /* NewMessageController.swift in Sources */,
 				772A65BD2461C5A70081CD93 /* CustomInputAccessoryView.swift in Sources */,
 			);

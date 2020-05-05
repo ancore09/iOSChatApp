@@ -23,4 +23,36 @@ struct Service {
             completion(users)
         }
     }
+    
+    func uploadMessage(_ message: String, toUser: User, completion: ((Error?) -> Void)?) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        let data = ["text": message,
+                    "fromId": currentUid,
+                    "toId": toUser.uid,
+                    "timestamp": Timestamp(date: Date())] as [String : Any]
+        
+        COLLECTION_MESSAGES.document(currentUid).collection(toUser.uid).addDocument(data: data) { (error) in
+            COLLECTION_MESSAGES.document(toUser.uid).collection(currentUid).addDocument(data: data, completion: completion)
+        }
+    }
+    
+    func fetchMessages(forUser user: User, completion: @escaping([Message]) -> Void) {
+        var messages = [Message]()
+        
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        let query = COLLECTION_MESSAGES.document(currentUid).collection(user.uid).order(by: "timestamp")
+        
+        query.addSnapshotListener { (snapshot, error) in
+            snapshot?.documentChanges.forEach({ (change) in
+                if change.type == .added {
+                    let dict = change.document.data()
+                    messages.append(Message(dictionary: dict))
+                    completion(messages)
+                }
+            })
+            //completion(messages)
+        }
+    }
 }

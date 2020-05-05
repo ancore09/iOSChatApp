@@ -12,6 +12,12 @@ import SDWebImage
 class MessageCell: UICollectionViewCell {
     
     //MARK: Properties
+    var message: Message? {
+        didSet { configure() }
+    }
+    
+    var bubbleLeftAnchor: NSLayoutConstraint!
+    var bubbleLRightAnchor: NSLayoutConstraint!
     
     private let profileImgeView: UIImageView = {
         let iv = UIImageView()
@@ -27,7 +33,6 @@ class MessageCell: UICollectionViewCell {
         tv.font = UIFont.systemFont(ofSize: 16)
         tv.isScrollEnabled = false
         tv.isEditable = false
-        tv.text = "Some test message"
         tv.textColor = .white
         return tv
     }()
@@ -51,8 +56,13 @@ class MessageCell: UICollectionViewCell {
         
         addSubview(bubbleContainer)
         bubbleContainer.layer.cornerRadius = 12
-        bubbleContainer.anchor(top: topAnchor, left: profileImgeView.rightAnchor, paddingLeft: 12)
+        bubbleContainer.anchor(top: topAnchor)
         bubbleContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
+        
+        bubbleLeftAnchor = bubbleContainer.leftAnchor.constraint(equalTo: profileImgeView.rightAnchor, constant: 12)
+        bubbleLeftAnchor.isActive = false
+        bubbleLRightAnchor = bubbleContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: -12)
+        bubbleLRightAnchor.isActive = false
         
         bubbleContainer.addSubview(textView)
         textView.anchor(top: bubbleContainer.topAnchor, left: bubbleContainer.leftAnchor, bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 4, paddingRight: 12)
@@ -63,4 +73,19 @@ class MessageCell: UICollectionViewCell {
     }
     
     //MARK: Helpers
+    
+    func configure() {
+        guard let message = message else { return }
+        let viewModel = MessageViewModel(message: message)
+        
+        bubbleContainer.backgroundColor = viewModel.messageBackgroundColor
+        textView.textColor = viewModel.messageTextColor
+        textView.text = message.text
+        
+        bubbleLeftAnchor.isActive = viewModel.leftAnchorActive
+        bubbleLRightAnchor.isActive = viewModel.rightAnchorActive
+        
+        profileImgeView.isHidden = viewModel.shouldHideProfileImage
+        profileImgeView.sd_setImage(with: viewModel.profileImageUrl, completed: nil)
+    }
 }
