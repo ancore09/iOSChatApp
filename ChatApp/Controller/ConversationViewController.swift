@@ -17,6 +17,7 @@ class ConversationViewController: UIViewController {
     
     private let tableView = UITableView()
     private var conversations = [Conversation]()
+    private var conversationsDictionary = [String: Conversation]()
     
     private let newMessageButton: UIButton = {
         let button = UIButton(type: .system)
@@ -63,6 +64,9 @@ class ConversationViewController: UIViewController {
     
     func fetchConversations() {
         Service.shared.fetchConversations { (conversations) in
+//            conversations.forEach { (conversation) in
+//                let message = conversation.message
+//            }
             self.conversations = conversations
             self.tableView.reloadData()
         }
@@ -113,7 +117,7 @@ class ConversationViewController: UIViewController {
     func configureTableView() {
         tableView.backgroundColor = .white
         tableView.rowHeight = 80
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseId)
+        tableView.register(ConversationCell.self, forCellReuseIdentifier: reuseId)
         tableView.tableFooterView = UIView()
         
         tableView.delegate = self
@@ -131,8 +135,8 @@ extension ConversationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath)
-        cell.textLabel?.text = conversations[indexPath.row].message.text
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as! ConversationCell
+        cell.conversation = conversations[indexPath.row]
         return cell
     }
     
@@ -141,7 +145,9 @@ extension ConversationViewController: UITableViewDataSource {
 
 extension ConversationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let user = conversations[indexPath.row].user
+        let controller = ChatController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

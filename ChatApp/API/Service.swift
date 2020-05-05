@@ -79,7 +79,15 @@ struct Service {
                 let dict = change.document.data()
                 let message = Message(dictionary: dict)
                 
-                self.fetchUser(withUid: message.toId) { (user) in
+                var id = ""
+                
+                if message.fromId == Auth.auth().currentUser?.uid {
+                    id = message.toId
+                } else {
+                    id = message.fromId
+                }
+                
+                self.fetchUser(withUid: id) { (user) in
                     let conversation = Conversation(user: user, message: message)
                     conversations.append(conversation)
                     completion(conversations)
