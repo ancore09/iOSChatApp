@@ -19,12 +19,19 @@ class NewMessageController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         confirureUI()
+        fetchUsers()
     }
     
     // MARK: Selectors
     
     @objc func handleDismiss() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: API
+    
+    func fetchUsers() {
+        Service.shared.fetchUsers()
     }
     
     // MARK: Helpers
