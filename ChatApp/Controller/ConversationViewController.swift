@@ -147,6 +147,7 @@ extension ConversationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = conversations[indexPath.row].user
         let controller = ChatController(user: user)
+        navigationController?.title = ""
         navigationController?.pushViewController(controller, animated: true)
     }
 }
