@@ -46,8 +46,9 @@ class ConversationViewController: UIViewController {
     @objc func showNewMessage() {
         let controller = NewMessageController()
         let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
+        //nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
+        //navigationController?.pushViewController(controller, animated: true)
     }
     
     // MARK: Helpers
