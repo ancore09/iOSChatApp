@@ -21,6 +21,9 @@
 		772A65B5246190FF0081CD93 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65B4246190FF0081CD93 /* UserCell.swift */; };
 		772A65B72461951D0081CD93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65B62461951D0081CD93 /* User.swift */; };
 		772A65B9246195B40081CD93 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65B8246195B40081CD93 /* Service.swift */; };
+		772A65BB2461B26A0081CD93 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65BA2461B26A0081CD93 /* ChatController.swift */; };
+		772A65BD2461C5A70081CD93 /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65BC2461C5A70081CD93 /* CustomInputAccessoryView.swift */; };
+		772A65BF2461CE5B0081CD93 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A65BE2461CE5B0081CD93 /* MessageCell.swift */; };
 		7793A833245F2FFA00A5E33F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A832245F2FFA00A5E33F /* AppDelegate.swift */; };
 		7793A835245F2FFA00A5E33F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A834245F2FFA00A5E33F /* SceneDelegate.swift */; };
 		7793A837245F2FFA00A5E33F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7793A836245F2FFA00A5E33F /* ViewController.swift */; };
@@ -46,6 +49,9 @@
 		772A65B4246190FF0081CD93 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		772A65B62461951D0081CD93 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		772A65B8246195B40081CD93 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		772A65BA2461B26A0081CD93 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		772A65BC2461C5A70081CD93 /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
+		772A65BE2461CE5B0081CD93 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		7793A82F245F2FFA00A5E33F /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7793A832245F2FFA00A5E33F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7793A834245F2FFA00A5E33F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +155,8 @@
 				772A65A5246067AC0081CD93 /* InputContainerView.swift */,
 				772A65A724606A8E0081CD93 /* CustomTextField.swift */,
 				772A65B4246190FF0081CD93 /* UserCell.swift */,
+				772A65BC2461C5A70081CD93 /* CustomInputAccessoryView.swift */,
+				772A65BE2461CE5B0081CD93 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +175,7 @@
 				772A659E246055A80081CD93 /* Auth */,
 				7798650D245F70C6003335B4 /* ConversationViewController.swift */,
 				772A65B224618C5D0081CD93 /* NewMessageController.swift */,
+				772A65BA2461B26A0081CD93 /* ChatController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -323,12 +332,15 @@
 				772A65B72461951D0081CD93 /* User.swift in Sources */,
 				7798650E245F70C6003335B4 /* ConversationViewController.swift in Sources */,
 				772A65B9246195B40081CD93 /* Service.swift in Sources */,
+				772A65BF2461CE5B0081CD93 /* MessageCell.swift in Sources */,
 				7793A835245F2FFA00A5E33F /* SceneDelegate.swift in Sources */,
 				772A65A0246055B70081CD93 /* LoginController.swift in Sources */,
 				772A65A4246058080081CD93 /* Extensions.swift in Sources */,
 				772A65AA24607BA70081CD93 /* LoginViewModel.swift in Sources */,
+				772A65BB2461B26A0081CD93 /* ChatController.swift in Sources */,
 				772A65A824606A8E0081CD93 /* CustomTextField.swift in Sources */,
 				772A65B324618C5D0081CD93 /* NewMessageController.swift in Sources */,
+				772A65BD2461C5A70081CD93 /* CustomInputAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
